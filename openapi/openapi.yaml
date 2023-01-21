@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.1.0
 info:
-  title: Autheus.com Platform REST API
+  title: Nifli.com REST API
   description:
     $ref: ./info-description.md
   license:
@@ -9,18 +9,11 @@ info:
   version: 1.0.0
 tags: 
   - $ref: tenants/tags/Accounts.yaml
-  - $ref: ratelimits/tags/ApiKeys.yaml
   - $ref: oidc/tags/ClientApplications.yaml
-  - $ref: ratelimits/tags/JwtVerifiers.yaml
-  - $ref: ratelimits/tags/Policies.yaml
-  - $ref: ratelimits/tags/RateLimiting.yaml
-  - $ref: ratelimits/tags/RateLimitingMetrics.yaml
-  - $ref: ratelimits/tags/RatePlans.yaml
-  - $ref: toggles/tags/Releases.yaml
 servers:
-  - url: 'https://api.test.autheus.com'
+  - url: 'https://api.test.nifli.com'
     description: Integration and Test/Staging server
-  - url: 'https://api.autheus.com'
+  - url: 'https://api.nifli.com'
     description: Production server (Not Deployed)
 paths:
   /accounts:
@@ -31,32 +24,6 @@ paths:
     $ref: oidc/paths/clients.yaml
   '/clients/{clientId}':
     $ref: oidc/paths/clients_{clientId}.yaml
-  /apikeys:
-    $ref: ratelimits/paths/apikeys.yaml
-  '/apikeys/{apikey}':
-    $ref: ratelimits/paths/apikeys_{apikey}.yaml
-  /jwtverifiers:
-    $ref: ratelimits/paths/jwtverifiers.yaml
-  '/jwtverifiers/{jwtVerifierId}':
-    $ref: ratelimits/paths/jwtverifiers_{jwtVerifierId}.yaml
-  /limits:
-    $ref: ratelimits/paths/limits.yaml
-  '/metrics/{apikey}':
-    $ref: ratelimits/paths/metrics_{apikey}.yaml
-  /policies:
-    $ref: ratelimits/paths/policies.yaml
-  '/policies/{policyId}':
-    $ref: ratelimits/paths/policies_{policyId}.yaml
-  /rateplans:
-    $ref: ratelimits/paths/rateplans.yaml
-  '/rateplans/{rateplanId}':
-    $ref: ratelimits/paths/rateplans_{rateplanId}.yaml
-  '/rateplans/{rateplanId}/apikeys':
-    $ref: ratelimits/paths/rateplans_{rateplanId}_apikeys.yaml
-  '/releases':
-    $ref: toggles/paths/releases.yaml
-  '/releases/{releaseId}':
-    $ref: toggles/paths/releases_{releaseId}.yaml
 security:
   - OAuth2: []
 components:

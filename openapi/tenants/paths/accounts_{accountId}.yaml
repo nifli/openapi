@@ -1,0 +1,91 @@
+get:
+  tags:
+    - Accounts
+  summary: Read an account configuration (by ID or slug)
+  operationId: 'Account::read'
+  parameters:
+    - name: accountId
+      in: path
+      description: The UUID or slug of the account (or "me" to use default).
+      required: true
+      allowEmptyValue: false
+      schema:
+        type: string
+  responses:
+    '200':
+      description: Account configuration details.
+      content:
+        application/json:
+          schema:
+            $ref: ../Account.json
+put:
+  tags:
+    - Accounts
+  summary: Update an account configuration (by ID or slug)
+  operationId: 'Account::update'
+  parameters:
+    - name: accountId
+      in: path
+      description: The UUID or slug of the account (or "me" to use default).
+      required: true
+      allowEmptyValue: false
+      schema:
+        type: string
+  requestBody:
+    description: Account configuration details.
+    content:
+      application/json:
+        schema:
+          $ref: ../AccountDto.json
+    required: true
+  responses:
+    '204':
+      description: No content
+delete:
+  tags:
+    - Accounts
+  summary: Remove an entire account (by ID or slug)
+  operationId: 'Account::delete'
+  parameters:
+    - name: accountId
+      in: path
+      description: The UUID or slug of the account (or "me" to use default).
+      required: true
+      allowEmptyValue: false
+      schema:
+        type: string
+  responses:
+    '204':
+      description: No content
+patch:
+  tags:
+    - Accounts
+  summary: >-
+    Perform a partial update of an account (by ID or slug).
+  description: >-
+    This method observes JSON patch semantics.
+    Any properties that are explicity set (e.g. to empty) will update the Account. Properties not
+    included in the body will not effect the Account configuration.  
+  operationId: 'Account::patch'
+  parameters:
+    - name: accountId
+      in: path
+      description: The UUID or slug of the account.
+      required: true
+      allowEmptyValue: false
+      schema:
+        type: string
+  requestBody:
+    description: Account configuration details.
+    content:
+      application/json:
+        schema:
+          $ref: ../AccountDto.json
+    required: true
+  responses:
+    '200':
+      description: The entire newly-updated account.
+      content:
+        application/json:
+          schema:
+            $ref: ../Account.json

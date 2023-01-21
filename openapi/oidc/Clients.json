@@ -1,0 +1,14 @@
+{
+    "type" : "object",
+    "properties" : {
+        "_embedded" : {
+            "type" : "object",
+            "properties" : {
+                "clients" : {
+                    "type" : "array",
+                    "items" : {"$ref" : "Client.json"}
+                }
+            }
+        }
+    }
+}

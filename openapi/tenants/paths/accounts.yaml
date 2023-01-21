@@ -1,0 +1,34 @@
+get:
+  tags:
+    - Accounts
+  summary: List all the accounts associated with the organization (paginated)
+  operationId: 'Account::readAll'
+  responses:
+    '200':
+      description: An array of accounts in this organization.
+      content:
+        application/json:
+          schema:
+            $ref: ../Accounts.json
+post:
+  tags:
+    - Accounts
+  summary: >-
+    Create a new account within this organization.
+  operationId: 'Account::create'
+  requestBody:
+    description: Account definition metadata.
+    content:
+      application/json:
+        schema:
+          $ref: ../AccountDto.json
+    required: true
+  responses:
+    '201':
+      description: >-
+        Successful account creation. Returns the newly-created account
+        metadata.
+      content:
+        application/json:
+          schema:
+            $ref: ../Account.json

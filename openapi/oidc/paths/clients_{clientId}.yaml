@@ -1,0 +1,100 @@
+get:
+  tags:
+    - Client Applications
+  summary: Read a client application configuration (by ID or name)
+  operationId: 'Client::read'
+  parameters:
+    - $ref: ../parameters/clientId.yaml
+  responses:
+    '200':
+      description: Client application configuration metadata
+      content:
+        application/json:
+          schema:
+            $ref: ../Client.json
+    '401':
+      $ref: ../../responses/401Unauthorized.yaml
+    '403':
+      $ref: ../../responses/403Forbidden.yaml
+    '404':
+      $ref: ../../responses/404NotFound.yaml
+put:
+  tags:
+    - Client Applications
+  summary: Update a client application configuration (by ID or name)
+  operationId: 'Client::update'
+  parameters:
+    - $ref: ../parameters/clientId.yaml
+  requestBody:
+    description: Client application configuration metadata.
+    content:
+      application/json:
+        schema:
+          $ref: ../ClientDto.json
+    required: true
+  responses:
+    '204':
+      description: No content
+    '400':
+      $ref: ../../responses/400BadRequest.yaml
+    '401':
+      $ref: ../../responses/401Unauthorized.yaml
+    '403':
+      $ref: ../../responses/403Forbidden.yaml
+    '404':
+      $ref: ../../responses/404NotFound.yaml
+    '409':
+      $ref: ../../responses/409Conflict.yaml
+delete:
+  tags:
+    - Client Applications
+  summary: Remove a client application (by ID or name)
+  operationId: 'Client::delete'
+  parameters:
+    - $ref: ../parameters/clientId.yaml
+  responses:
+    '204':
+      description: No content
+    '401':
+      $ref: ../../responses/401Unauthorized.yaml
+    '403':
+      $ref: ../../responses/403Forbidden.yaml
+    '404':
+      $ref: ../../responses/404NotFound.yaml
+patch:
+  tags:
+    - Client Applications
+  summary: >-
+    Perform a partial update of a client application configuration (by ID or name).
+  description: >-
+    This method observes JSON patch semantics.
+    Any properties that are explicity set (e.g. to empty) will update the Client. Properties not included in the body will
+    not effect the Client configuration.  
+  operationId: 'Client::patch'
+  parameters:
+    - $ref: ../parameters/clientId.yaml
+  requestBody:
+    description: Client application configuration metadata.
+    content:
+      application/json:
+        schema:
+          $ref: ../ClientDto.json
+    required: true
+  responses:
+    '200':
+      description: The entire newly-updated Client application.
+      content:
+        application/json:
+          schema:
+            $ref: ../Client.json
+    '400':
+      $ref: ../../responses/400BadRequest.yaml
+    '401':
+      $ref: ../../responses/401Unauthorized.yaml
+    '403':
+      $ref: ../../responses/403Forbidden.yaml
+    '404':
+      $ref: ../../responses/404NotFound.yaml
+    '409':
+      $ref: ../../responses/409Conflict.yaml
+        

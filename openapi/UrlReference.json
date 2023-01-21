@@ -1,0 +1,23 @@
+{
+  "type" : "object",
+  "properties" : {
+    "href" : {
+      "description" : "The URL to the referenced resource",
+      "type" : "string",
+      "maxLength" : 1024
+    },
+    "title" : {
+      "description" : "A human-readable name or description of the link.",
+      "type" : "string",
+      "maxLength" : 1024
+    },
+    "type" : {
+      "description" : "A hint at the type returned by resolving the 'href'; typically a media-type returned by a GET on the href URL.",
+      "type" : "string",
+      "maxLength" : 256
+    }
+  },
+  "required" : [ "href" ],
+  "title" : "UrlReference",
+  "description" : "A pointer to a URL-based resource, used in other resources to hold a link to the referenced resource. Only the 'href' property is required."
+}

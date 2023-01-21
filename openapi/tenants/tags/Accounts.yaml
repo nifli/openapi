@@ -1,0 +1,3 @@
+name: Accounts
+description: |
+  Multi-tenancy Management API: Management of customer accounts. Accounts may be hierarchical.

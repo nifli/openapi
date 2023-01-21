@@ -1,0 +1,14 @@
+{
+    "type" : "object",
+    "properties" : {
+        "_embedded" : {
+            "type" : "object",
+            "properties" : {
+                "accounts" : {
+                    "type" : "array",
+                    "items" : {"$ref" : "Account.json"}
+                }
+            }
+        }
+    }
+}

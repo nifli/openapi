@@ -1,0 +1,6 @@
+description: 
+  Invalid request received. Malformed JSON or other syntactic or semantic validation exception occurred.
+content:
+  application/json:
+    schema:
+      $ref: ../Error.json

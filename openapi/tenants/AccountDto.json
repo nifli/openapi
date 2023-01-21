@@ -1,0 +1,28 @@
+{
+  "$schema" : "https://json-schema.org/draft/2020-12/schema",
+  "type" : "object",
+  "properties" : {
+    "description" : {
+      "type" : "string",
+      "maxLength" : 1024
+    },
+    "name" : {
+      "type" : "string",
+      "maxLength" : 256
+    },
+    "parent" : {
+      "$ref" : "../AccountReference.json"
+    },
+    "region" : {
+      "type" : "string",
+      "enum" : ["NORTH_AMERICA"]
+    },
+    "slug" : {
+      "type" : "string",
+      "pattern" : "[a-z_\\-0-9]+"
+    }
+  },
+  "$id" : "https://schema.autheus.com/AccountDto.json",
+  "title" : "AccountDto",
+  "description" : "JSON Schema definition for AccountDto"
+}

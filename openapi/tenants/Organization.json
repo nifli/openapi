@@ -1,0 +1,73 @@
+{
+  "$schema" : "https://json-schema.org/draft/2020-12/schema",
+  "type" : "object",
+  "properties" : {
+    "createdAt" : {
+      "type" : "string",
+      "readOnly" : true,
+      "format" : "date-time"
+    },
+    "description" : {
+      "type" : "string",
+      "maxLength" : 1024
+    },
+    "extended" : {
+      "type" : "object",
+      "properties" : {
+        "map" : {
+          "type" : "object"
+        }
+      }
+    },
+    "id" : {
+      "type" : "string",
+      "readOnly" : true,
+      "format" : "uuid"
+    },
+    "name" : {
+      "type" : "string",
+      "maxLength" : 256
+    },
+    "parent" : {
+      "type" : "object",
+      "properties" : {
+        "id" : {
+          "type" : "string",
+          "format" : "uuid"
+        }
+      },
+      "required" : [ "id" ]
+    },
+    "schema" : {
+      "type" : "object",
+      "properties" : {
+        "href" : {
+          "type" : "string",
+          "maxLength" : 1024
+        },
+        "title" : {
+          "type" : "string",
+          "maxLength" : 1024
+        },
+        "type" : {
+          "type" : "string",
+          "maxLength" : 256
+        }
+      },
+      "required" : [ "href" ]
+    },
+    "slug" : {
+      "type" : "string",
+      "pattern" : "[a-z_\\-0-9]+"
+    },
+    "updatedAt" : {
+      "type" : "string",
+      "readOnly" : true,
+      "format" : "date-time"
+    }
+  },
+  "required" : [ "name" ],
+  "$id" : "https://schema.autheus.com/tenants/Organization.json",
+  "title" : "Organization",
+  "description" : "JSON Schema definition for Organization"
+}

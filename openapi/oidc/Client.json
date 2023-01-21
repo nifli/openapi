@@ -1,0 +1,147 @@
+{
+  "$schema" : "https://json-schema.org/draft/2020-12/schema",
+  "type" : "object",
+  "properties" : {
+    "account" : {
+      "$ref" : "../AccountReference.json"
+    },
+    "allowedGrantTypes" : {
+      "minItems" : 1,
+      "maxItems" : 25,
+      "type" : "array",
+      "items" : {
+        "type" : "string",
+        "enum" : [ "AUTHORIZATION_CODE", "PASSWORD", "CLIENT_CREDENTIALS", "REFRESH_TOKEN", "TOKEN_EXCHANGE" ],
+        "minItems" : 1,
+        "maxItems" : 25
+      }
+    },
+    "allowedRedirectUrls" : {
+      "minLength" : 1,
+      "maxLength" : 1024,
+      "minItems" : 0,
+      "maxItems" : 1000,
+      "type" : "array",
+      "items" : {
+        "type" : "string",
+        "minLength" : 1,
+        "maxLength" : 1024,
+        "minItems" : 0,
+        "maxItems" : 1000
+      }
+    },
+    "allowedScopes" : {
+      "maxLength" : 256,
+      "minItems" : 1,
+      "maxItems" : 1000,
+      "type" : "array",
+      "items" : {
+        "type" : "string",
+        "maxLength" : 256,
+        "minItems" : 1,
+        "maxItems" : 1000
+      }
+    },
+    "clientSecret" : {
+      "type" : "string",
+      "maxLength" : 256,
+      "readOnly" : true
+    },
+    "createdAt" : {
+      "type" : "string",
+      "readOnly" : true,
+      "format" : "date-time"
+    },
+    "description" : {
+      "type" : "string",
+      "maxLength" : 1024
+    },
+    "id" : {
+      "type" : "string",
+      "format" : "uuid",
+      "readOnly" : true
+    },
+    "name" : {
+      "type" : "string",
+      "maxLength" : 256,
+      "pattern" : "[a-z_\\-0-9]+"
+    },
+    "pkceMethod" : {
+      "type" : "string",
+      "enum" : [ "NONE", "PLAIN", "S256" ]
+    },
+    "plainTextSecret" : {
+      "type" : "string",
+      "readOnly" : true
+    },
+    "profile" : {
+      "type" : "string",
+      "enum" : [ "WEB_APPLICATION", "USER_AGENT", "NATIVE" ]
+    },
+    "shouldAuthorizeGrants" : {
+      "type" : "boolean"
+    },
+    "supportedAudiences" : {
+      "maxLength" : 256,
+      "minItems" : 1,
+      "maxItems" : 25,
+      "type" : "array",
+      "items" : {
+        "type" : "string",
+        "maxLength" : 256,
+        "minItems" : 1,
+        "maxItems" : 25
+      }
+    },
+    "tokenExchangeConfig" : {
+      "type" : "object",
+      "properties" : {
+        "allowedIssuers" : {
+          "description" : "OPTIONAL. An array of token issuers that are allowed in incoming Java Web Tokens. Issuers are associated with the 'iss' claim in JWTs and must expose a Java Web Key (JWKS) endpoint in order to validate JWT signatures.",
+          "minItems" : 0,
+          "maxItems" : 25,
+          "type" : "array",
+          "items" : {
+            "type" : "object",
+            "properties" : {
+              "jwks" : {
+                "description" : "REQUIRED. The URL where this issuer exposes its JWKS endpoint for JWT signature validation.",
+                "$ref" : "../UrlReference.json"
+              },
+              "value" : {
+                "description" : "REQUIRED. The expected string that appears as the value of 'iss' claim in incoming Java Web Tokens.",
+                "type" : "string",
+                "maxLength" : 1024
+              }
+            },
+            "required" : [ "jwks", "value" ],
+            "minItems" : 0,
+            "maxItems" : 25
+          }
+        },
+        "verifiedClaims" : {
+          "description" : "OPTIONAL. An optional map of additional name/value pairs of claims (and their respective values) from the JWT that must be verified.",
+          "type" : "object",
+          "maxLength" : 256,
+          "minItems" : 0,
+          "maxItems" : 25,
+          "additionalProperties" : {
+            "type" : "string"
+          }
+        }
+      }
+    },
+    "tokenTtlSeconds" : {
+      "type" : "integer"
+    },
+    "updatedAt" : {
+      "type" : "string",
+      "readOnly" : true,
+      "format" : "date-time"
+    }
+  },
+  "required" : [ "allowedGrantTypes", "name", "profile" ],
+  "$id" : "https://schema.autheus.com/oidc/Client.json",
+  "title" : "Client",
+  "description" : "The Client resource defines an OAuth2 (or OpenID Connect) application configuration which can be used to acquire access tokens."
+}

@@ -1,0 +1,5 @@
+description: The request failed due to an authorization issue. Usually this means an invalid or expired token was submitted.
+content:
+  application/json:
+    schema:
+      $ref: ../Error.json

@@ -1,0 +1,6 @@
+description: 
+  An uncaught error occurred. This indicates a system outage.
+content:
+  application/json:
+    schema:
+      $ref: error.json

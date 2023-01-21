@@ -1,0 +1,18 @@
+{
+    "title" : "Error Response",
+    "description" : "READ-ONLY. This is returned for any error that occurrs providing a unique identifier for the error as well as a textual description.",
+    "type" : "object",
+    "properties" : {
+      "id" : {
+        "type" : "string",
+        "format" : "uuid",
+        "readOnly" : true,
+        "description" : "A unique identifier for this error."
+      },
+      "message" : {
+        "type" : "string",
+        "readOnly" : true,
+        "description" : "A human-readable detailed description of the error."
+      }
+    }  
+}

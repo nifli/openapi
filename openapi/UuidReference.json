@@ -1,0 +1,12 @@
+{
+    "type" : "object",
+    "properties" : {
+    "id" : {
+        "type" : "string",
+        "format" : "uuid"
+    }
+    },
+    "required" : [ "id" ],
+    "title" : "UuidReference",
+    "description" : "This is a reference to another resource."  
+}

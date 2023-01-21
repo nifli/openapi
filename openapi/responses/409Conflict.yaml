@@ -1,0 +1,7 @@
+description: 
+  Occurs when processing the request would create an issue in the state of the system or resource.
+  Usually this is because of a unique-constraint violation such as replicated 'slug' or resource name.
+content:
+  application/json:
+    schema:
+      $ref: ../Error.json

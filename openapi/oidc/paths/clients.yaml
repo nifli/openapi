@@ -1,0 +1,50 @@
+get:
+  tags:
+    - Client Applications
+  summary: List all the client applications (paginated)
+  operationId: 'Client::readAll'
+  responses:
+    '200':
+      description: An array of client applications and associated configuration metadata
+      content:
+        application/json:
+          schema:
+            $ref: ../Clients.json
+    '400':
+      $ref: ../../responses/400BadRequest.yaml
+    '401':
+      $ref: ../../responses/401Unauthorized.yaml
+    '403':
+      $ref: ../../responses/403Forbidden.yaml
+post:
+  tags:
+    - Client Applications
+  summary: >-
+    Create a new OAuth2/OIDC client application.
+  operationId: 'Client::create'
+  requestBody:
+    description: Client application configuration metadata.
+    content:
+      application/json:
+        schema:
+          $ref: ../ClientDto.json
+    required: true
+  responses:
+    '201':
+      description: >-
+        Successful client application creation. Returns the newly-created client
+        configuration metadata
+      content:
+        application/json:
+          schema:
+            $ref: ../Client.json
+    '400':
+      $ref: ../../responses/400BadRequest.yaml
+    '401':
+      $ref: ../../responses/401Unauthorized.yaml
+    '403':
+      $ref: ../../responses/403Forbidden.yaml
+    '404':
+      $ref: ../../responses/404NotFound.yaml
+    '409':
+      $ref: ../../responses/409Conflict.yaml

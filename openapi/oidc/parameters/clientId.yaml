@@ -1,0 +1,7 @@
+name: clientId
+in: path
+description: The UUID or name of the client application (or "me" to use value from token).
+required: true
+allowEmptyValue: false
+schema:
+  type: string
